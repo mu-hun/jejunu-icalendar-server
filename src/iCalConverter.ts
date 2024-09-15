@@ -27,6 +27,14 @@ export function formatToICalDate(date: string, time: string) {
   return `${date}T${time.replace(':', '')}00`;
 }
 
+function iCalDateStringToDateObject(date: string) {
+  const dateString = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(
+    6,
+    8
+  )}T${date.slice(9, 11)}:${date.slice(11, 13)}:${date.slice(13, 15)}`;
+  return new Date(dateString);
+}
+
 export function reconstructedLecture(
   lecture: Lecture,
   status: LectureStatus
@@ -97,6 +105,11 @@ export function iCalConverter(lectures: Lecture[]) {
     .filter(
       (lecture): lecture is Exclude<ReconstructedLecture, null> =>
         lecture !== null
+    )
+    .sort(
+      (a, b) =>
+        iCalDateStringToDateObject(a.startTime).getTime() -
+        iCalDateStringToDateObject(b.startTime).getTime()
     );
 
   const events = mergeLectures(reconstructedLectures)
