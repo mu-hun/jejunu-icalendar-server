@@ -1,3 +1,5 @@
+import type { Lecture } from './response';
+
 export function parseLectureStatus(lecture: Lecture): LectureStatus {
   const hasLeadingNine = (str: string | null) => str?.[0] == '9';
 

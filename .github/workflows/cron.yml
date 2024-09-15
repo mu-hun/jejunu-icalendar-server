@@ -1,0 +1,25 @@
+name: cron
+on:
+  schedule:
+    - cron: '0 18 * * MON-FRI'
+  workflow_dispatch:
+
+jobs:
+  cron:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.7'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm puppeteer browsers install chrome@stable
+      - name: Run cron job
+        run: pnpm start
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
+          username: ${{ secrets.username }}
+          password: ${{ secrets.password }}
