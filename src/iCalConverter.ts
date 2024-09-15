@@ -86,7 +86,10 @@ END:VEVENT`.trim();
 
 export function iCalConverter(lectures: Lecture[]) {
   const reconstructedLectures = lectures
-    .filter((lecture) => lecture !== null)
+    .filter(
+      (lecture): lecture is Exclude<Lecture, null> =>
+        lecture !== null && lecture.bgngHr !== null && lecture.endHr !== null
+    )
     .map((lecture) => {
       const status = parseLectureStatus(lecture);
       return reconstructedLecture(lecture, status);
