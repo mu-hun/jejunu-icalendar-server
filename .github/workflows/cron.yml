@@ -15,7 +15,7 @@ jobs:
           node-version: '22.7'
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm puppeteer browsers install chrome@stable
+      - run: pnpm node node_modules/puppeteer/install.mjs
       - name: Run cron job
         run: pnpm start
         env:
