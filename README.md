@@ -18,7 +18,7 @@
 
 이와 같은 문제를 해결하기 위해 강의 시간표 데이터를 매일 갱신하여 [icalendar 표준](https://icalendar.org/) 형식의 `.ics` 파일로 변환하여, 이를 외부 캘린더 클라이언트(Google Calendar, Apple Calendar 등)에서 구독할 수 있도록 지원하는 HTTP GET 서버 파이프라인을 구축했습니다.
 
-<!-- TODO: 아이폰 및 애플워치 스크린샷 첨부하기 -->
+![showcases](screenshots/showcases.webp)
 
 이전보다 시간표 변동 사항을 기기에서 바로 확인하는 편리한 경험을 누리고 있는 중입니다.
 
