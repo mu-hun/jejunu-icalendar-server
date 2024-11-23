@@ -10,7 +10,7 @@
 
 ### 제주대학교 포털에서 시간표 데이터 받기
 
-![desktop-portal](screenshots/desktop-portal.webp)
+<img src="screenshots/desktop-portal.webp" width="415px" alt="제주대학교 포털 수업 시간표 조회" />
 
 - GET https://portal.jejunu.ac.kr/api/patis/timeTable.jsp
 - query params: -`sttLsnYmd`, `endLsnYmd` 값 형태는 `YYYYMMDD`
