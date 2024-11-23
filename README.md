@@ -45,7 +45,9 @@
 
 ## 관리 시 참고 사항
 
-### 시간표 데이터 받기
+### 제주대학교 포털에서 시간표 데이터 받기
+
+![desktop-portal](screenshots/desktop-portal.webp)
 
 - GET https://portal.jejunu.ac.kr/api/patis/timeTable.jsp
 - query params: -`sttLsnYmd`, `endLsnYmd` 값 형태는 `YYYYMMDD`
