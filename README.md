@@ -52,7 +52,11 @@
 
 > 예) https://portal.jejunu.ac.kr/api/patis/timeTable.jsp?sttLsnYmd=20240902&endLsnYmd=20241221
 
-### 보강, 휴강, 온라인 판단 로직
+### 응답 예시
+
+강의 시간표 [샘플 덤프 데이터]를 참고 바랍니다.
+
+### 포털 내 보강, 휴강, 온라인 판단 로직 관련 스니펫
 
 ```js
 const isNine = (str) => str && str.substr(0, 1) == '9';
