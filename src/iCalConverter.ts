@@ -65,7 +65,10 @@ export function mergeLectures(lectures: ReconstructedLecture[]) {
       if (reducing.length === 0) return [lecture];
       const previousLecture = reducing.at(-1)!;
 
-      if (previousLecture.name === lecture.name) {
+      if (
+        previousLecture.name === lecture.name &&
+        previousLecture.date === lecture.date
+      ) {
         const status = (() => {
           if (previousLecture.status !== '일반') return previousLecture.status;
           if (lecture.status !== '일반') return lecture.status;
