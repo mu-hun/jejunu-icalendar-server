@@ -1,53 +1,8 @@
 📅 제주대학교 강의 시간표 데이터를 매일 갱신하여 기기의 기본 캘린더 클라이언트(Google, Apple Calendar 등)에서 구독할 수 있는 icalendar 서버를 구축하는 웹 오토메이션 프로젝트입니다.
 
-<img src="screenshots/main.webp" width="412px"/>
-
 |                                                                   [컨버터 명세](src/tests/index.test.ts) 커버리지                                                                   |                                                                                 AWS S3 업로드 상태                                                                                  |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | [![Test · Workflow runs](https://github.com/mu-hun/jejunu-icalendar-server/workflows/Test/badge.svg)](https://github.com/mu-hun/jejunu-icalendar-server/actions/workflows/test.yml) | [![cron · Workflow runs](https://github.com/mu-hun/jejunu-icalendar-server/workflows/cron/badge.svg)](https://github.com/mu-hun/jejunu-icalendar-server/actions/workflows/cron.yml) |
-
-## 관리 시 참고 사항
-
-### 제주대학교 포털에서 시간표 데이터 받기
-
-<img src="screenshots/desktop-portal.webp" width="415px" alt="제주대학교 포털 수업 시간표 조회" />
-
-- GET https://portal.jejunu.ac.kr/api/patis/timeTable.jsp
-- query params: -`sttLsnYmd`, `endLsnYmd` 값 형태는 `YYYYMMDD`
-
-> 예) https://portal.jejunu.ac.kr/api/patis/timeTable.jsp?sttLsnYmd=20240902&endLsnYmd=20241221
-
-### 응답 예시
-
-강의 시간표 [샘플 덤프 데이터]를 참고 바랍니다.
-
-### 포털 내 보강, 휴강, 온라인 판단 로직 관련 스니펫
-
-```js
-const isNine = (str) => str && str.substr(0, 1) == '9';
-
-if (item.cclctYn == 'Y') {
-  if (isNine(item.aftrSplctLttmSe)) {
-    // 온라인 영상
-    td += '<span class="label label-red">온</span>';
-  } else {
-    td += '<span class="label label-cancle">휴</span>';
-  }
-} else if (item.splctYn == 'Y') {
-  const isUntactNine = isNine(item.untactLsnMthdSe);
-  const isAftrNine = isNine(item.aftrSplctLttmSe);
-
-  if (isUntactNine && isAftrNine) {
-    // 온라인 (녹화)
-    td += '<span class="label label-red">온</span>';
-  } else if (isUntactNine) {
-    // 온라인 (실시간)
-    td += '<span class="label label-blue">온</span>';
-  } else {
-    td += '<span class="label label-supplement">보</span>';
-  }
-}
-```
 
 ## 작업 동기
 
@@ -90,3 +45,18 @@ if (item.cclctYn == 'Y') {
    - 강의 시간표 [샘플 덤프 데이터]와 기대 출력 [`.ics` 파일](src/tests/excepted.ics)을 준비하고, [통합 테스트](src/tests/index.test.ts#L79-L86)를 통해 전체 변환 과정을 검증했습니다.
 
 [샘플 덤프 데이터]: src/tests/response.json
+
+## 관리 시 참고 사항
+
+### 제주대학교 포털에서 시간표 데이터 받기
+
+- GET https://portal.jejunu.ac.kr/api/patis/timeTable.jsp
+- query params: -`sttLsnYmd`, `endLsnYmd` 값 형태는 `YYYYMMDD`
+
+> 예) https://portal.jejunu.ac.kr/api/patis/timeTable.jsp?sttLsnYmd=20240902&endLsnYmd=20241221
+
+위 HTTP GET 요청 전 제주대학교 포털 로그인을 거쳐야 합니다.
+
+### 응답 예시
+
+강의 시간표 [샘플 덤프 데이터]를 참고 바랍니다.
