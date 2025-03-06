@@ -1,7 +1,7 @@
 name: cron
 on:
   schedule:
-    - cron: '0 18 * * MON-FRI'
+    - cron: '0 1 * * MON-FRI'
   workflow_dispatch:
 
 jobs:
