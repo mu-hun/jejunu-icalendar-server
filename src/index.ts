@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import { Value } from '@sinclair/typebox/value';
 import { upload } from './aws';
-import { username, password } from './env';
+import { username, password, START_YYYYMMDD, END_YYYYMMDD } from './env';
 import { iCalConverter } from './iCalConverter';
 import { ResponseTObject } from './response';
 
@@ -19,7 +19,7 @@ import { ResponseTObject } from './response';
   await page.waitForNavigation();
 
   const response = await page.goto(
-    'https://portal.jejunu.ac.kr/api/patis/timeTable.jsp?sttLsnYmd=20240902&endLsnYmd=20241221'
+    `https://portal.jejunu.ac.kr/api/patis/timeTable.jsp?sttLsnYmd=${START_YYYYMMDD}&endLsnYmd=${END_YYYYMMDD}`
   );
 
   if (response?.ok()) {

@@ -23,3 +23,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
+          START_YYYYMMDD: ${{ vars.START_YYYYMMDD }}
+          END_YYYYMMDD: ${{ vars.END_YYYYMMDD }}
