@@ -69,12 +69,6 @@ export function mergeLectures(lectures: ReconstructedLecture[]) {
         previousLecture.name === lecture.name &&
         previousLecture.date === lecture.date
       ) {
-        const status = (() => {
-          if (previousLecture.status !== '일반') return previousLecture.status;
-          if (lecture.status !== '일반') return lecture.status;
-          return '일반';
-        })();
-
         previousLecture.endTime = lecture.endTime;
       } else {
         reducing.push(lecture);
