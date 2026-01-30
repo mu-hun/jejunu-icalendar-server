@@ -39,8 +39,8 @@ Based on the reconstructed lecture format, I first wrote unit tests, then implem
    - Based on the prepared test case inputs, wrote [test specifications](src/tests/index.test.ts#L17-L77), with utility implementation in [`src/iCalConverter.ts`](src/iCalConverter.ts).
      - [#L3-L21](src/iCalConverter.ts#L40-L59): Utility to distinguish normal lectures, cancellations, supplements, and consecutive lectures from portal lecture schedule data
      - [#L40-L59](src/iCalConverter.ts#L40-L59): Utility to convert portal lecture schedule data to [reconstructed lecture format]
-     - [#L61-L82](src/iCalConverter.ts#L61-L82): Utility to merge consecutive lecture schedules into one
-     - [#L84-L95](src/iCalConverter.ts#L84-L95): Utility to convert reconstructed data to iCalendar event format
+     - [#L61-L79](src/iCalConverter.ts#L61-L79): Utility to merge consecutive lecture schedules into one
+     - [#L81-L92](src/iCalConverter.ts#L81-L92): Utility to convert reconstructed data to iCalendar event format
 3. Integration test dump data and expected output file preparation
    - Prepared [sample dump data] and expected output [`.ics` file](src/tests/excepted.ics), and verified the entire conversion process through [integration tests](src/tests/index.test.ts#L79-L86).
 

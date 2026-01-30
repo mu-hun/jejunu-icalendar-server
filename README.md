@@ -41,8 +41,8 @@
    - 준비한 테스트 케이스 입력을 기반으로 [테스트 명세](src/tests/index.test.ts#L17-L77)를 작성하고, 유틸리티 구현은 [`src/iCalConverter.ts`](`src/iCalConverter.ts)에서 진행했습니다.
      - [#L3-L21](src/iCalConverter.ts#L40-L59): 포털 강의 시간표 데이터에서 일반 강의, 휴강, 보강, 연강을 구분하는 유틸리티
      - [#L40-L59](src/iCalConverter.ts#L40-L59): 포털 강의 시간표 데이터를 [재구성한 강의 형식]으로 변환하는 유틸리티
-     - [#L61-L82](src/iCalConverter.ts#L61-L82): 연강 시간표를 하나로 병합하는 유틸리티
-     - [#L84-L95](src/iCalConverter.ts#L84-L95): 재구성한 데이터를 icalendar 이벤트 형식으로 변환하는 유틸리티
+     - [#L61-L79](src/iCalConverter.ts#L61-L79): 연강 시간표를 하나로 병합하는 유틸리티
+     - [#L81-L92](src/iCalConverter.ts#L81-L92): 재구성한 데이터를 icalendar 이벤트 형식으로 변환하는 유틸리티
 3. 통합 테스트 전용 덤프 데이터 및 기대 출력 파일 준비
    - 강의 시간표 [샘플 덤프 데이터]와 기대 출력 [`.ics` 파일](src/tests/excepted.ics)을 준비하고, [통합 테스트](src/tests/index.test.ts#L79-L86)를 통해 전체 변환 과정을 검증했습니다.
 
